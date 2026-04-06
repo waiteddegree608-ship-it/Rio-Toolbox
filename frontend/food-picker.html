@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今天吃什么 - Rio Toolbox</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body class="gradient gradient-aurora">
+    <div class="background-overlay"></div>
+    <header class="page-header">
+        <nav class="breadcrumb">
+            <a href="/" class="breadcrumb-link">工具箱首页</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>今天吃什么</span>
+        </nav>
+        <div class="theme-controller">
+            <label for="gradient-select">主题背景</label>
+            <select id="gradient-select" aria-label="选择渐变主题">
+                <option value="gradient-aurora">Aurora</option>
+                <option value="gradient-dusk">Dusk</option>
+                <option value="gradient-ocean">Ocean</option>
+                <option value="gradient-mauve">Mauve</option>
+            </select>
+        </div>
+    </header>
+    <main class="main-container">
+        <section class="glass-panel form-panel" aria-labelledby="food-picker-title">
+            <div class="panel-header">
+                <h1 id="food-picker-title">今天吃什么</h1>
+            </div>
+            <div class="panel-content">
+                <p>让工具替你决定美味的下一餐。点击按钮即可随机抽选。</p>
+                <button id="food-picker-button" class="primary-button">帮我决定</button>
+            </div>
+        </section>
+        <section class="glass-panel result-panel" aria-live="polite">
+            <div class="panel-header">
+                <h2>选择结果</h2>
+            </div>
+            <div class="panel-content" id="food-picker-result">等待开启美食之旅。</div>
+        </section>
+    </main>
+    <footer class="page-footer">
+        <span>Rio Toolbox · 你的私人物品栏</span>
+    </footer>
+    <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/food-picker.js"></script>
+</body>
+
+</html>

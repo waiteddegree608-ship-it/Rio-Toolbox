@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今日运势签 - Rio Toolbox</title>
+    <link rel="stylesheet" href="/assets/css/styles.css?v=20251020">
+</head>
+
+<body class="gradient gradient-aurora">
+    <div class="background-overlay"></div>
+    <header class="page-header">
+        <nav class="breadcrumb">
+            <a href="/" class="breadcrumb-link">工具箱首页</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>今日运势签</span>
+        </nav>
+        <div class="theme-controller">
+            <label for="gradient-select">主题背景</label>
+            <select id="gradient-select" aria-label="选择渐变主题">
+                <option value="gradient-aurora">Aurora</option>
+                <option value="gradient-dusk">Dusk</option>
+                <option value="gradient-ocean">Ocean</option>
+                <option value="gradient-mauve">Mauve</option>
+            </select>
+        </div>
+    </header>
+    <main class="main-container fortune-grid">
+        <section class="glass-panel fortune-card" aria-live="polite">
+            <div class="panel-header">
+                <h1>抽签结果</h1>
+            </div>
+            <div class="panel-content fortune-content" id="fortune-content">
+                <p class="muted">点击下方按钮，获取当日运势与专属祝福。</p>
+            </div>
+            <div class="fortune-actions">
+                <button id="fortune-button" class="primary-button">抽取今日运势</button>
+            </div>
+        </section>
+        <section class="glass-panel fortune-image" aria-label="调月莉音照片展示">
+            <div class="panel-header">
+                <h2>今日陪伴</h2>
+            </div>
+            <div class="panel-content fortune-image-wrap">
+                <div class="fortune-image-placeholder" id="fortune-image">
+                    <span class="muted">请在 assets/images/liyin/ 中添加照片</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer">
+        <span>Rio Toolbox · 你的私人物品栏</span>
+    </footer>
+    <script src="/assets/js/base.js?v=20251020"></script>
+    <script src="/assets/js/fortune.js?v=20251020"></script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机数生成器 - Rio Toolbox</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body class="gradient gradient-aurora">
+    <div class="background-overlay"></div>
+    <header class="page-header">
+        <nav class="breadcrumb">
+            <a href="/" class="breadcrumb-link">工具箱首页</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>随机数生成器</span>
+        </nav>
+        <div class="theme-controller">
+            <label for="gradient-select">主题背景</label>
+            <select id="gradient-select" aria-label="选择渐变主题">
+                <option value="gradient-aurora">Aurora</option>
+                <option value="gradient-dusk">Dusk</option>
+                <option value="gradient-ocean">Ocean</option>
+                <option value="gradient-mauve">Mauve</option>
+            </select>
+        </div>
+    </header>
+    <main class="main-container">
+        <section class="glass-panel form-panel" aria-labelledby="random-form-title">
+            <div class="panel-header">
+                <h1 id="random-form-title">生成随机数</h1>
+            </div>
+            <form class="panel-content" id="random-form">
+                <div class="field-group">
+                    <label for="min-value">最小值</label>
+                    <input type="number" id="min-value" name="min" value="1" required>
+                </div>
+                <div class="field-group">
+                    <label for="max-value">最大值</label>
+                    <input type="number" id="max-value" name="max" value="100" required>
+                </div>
+                <button type="submit" class="primary-button">生成</button>
+            </form>
+        </section>
+        <section class="glass-panel result-panel" aria-live="polite">
+            <div class="panel-header">
+                <h2>生成结果</h2>
+            </div>
+            <div class="panel-content" id="random-result">准备好开始吧。</div>
+        </section>
+    </main>
+    <footer class="page-footer">
+        <span>Rio Toolbox · 你的私人物品栏</span>
+    </footer>
+    <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/random-number.js"></script>
+</body>
+
+</html>

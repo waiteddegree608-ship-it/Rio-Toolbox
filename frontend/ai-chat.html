@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 对话工作台 - Rio Toolbox</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body class="gradient gradient-aurora">
+    <div class="background-overlay"></div>
+    <header class="page-header">
+        <nav class="breadcrumb">
+            <a href="/" class="breadcrumb-link">工具箱首页</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>AI 对话工作台</span>
+        </nav>
+        <div class="theme-controller">
+            <label for="gradient-select">主题背景</label>
+            <select id="gradient-select" aria-label="选择渐变主题">
+                <option value="gradient-aurora">Aurora</option>
+                <option value="gradient-dusk">Dusk</option>
+                <option value="gradient-ocean">Ocean</option>
+                <option value="gradient-mauve">Mauve</option>
+            </select>
+        </div>
+    </header>
+    <main class="main-container ai-grid">
+        <section class="glass-panel ai-sidebar" aria-labelledby="ai-sidebar-title">
+            <div class="panel-header">
+                <h2 id="ai-sidebar-title">助手面板</h2>
+                <button type="button" class="ghost-button icon-button" id="ai-sidebar-toggle" aria-expanded="true"
+                    aria-controls="ai-sidebar-content">收起</button>
+            </div>
+            <div class="panel-content" id="ai-sidebar-content">
+                <div class="sidebar-section" data-section="settings">
+                    <button type="button" class="sidebar-section-toggle" id="ai-settings-section-toggle"
+                        aria-expanded="true" aria-controls="ai-settings-section-body">
+                        <span>接口配置</span>
+                        <span class="toggle-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="sidebar-section-body" id="ai-settings-section-body">
+                        <form id="ai-settings-form" class="stack-form">
+                            <div class="field-group">
+                                <label for="ai-api-base">API 地址</label>
+                                <input type="url" id="ai-api-base" name="api_base"
+                                    placeholder="例如：https://api.openai.com/v1">
+                            </div>
+                            <div class="field-group">
+                                <label for="ai-api-key">API Key</label>
+                                <input type="password" id="ai-api-key" name="api_key" placeholder="密钥仅存储在本地">
+                            </div>
+                            <div class="field-group">
+                                <label for="ai-model">模型名称</label>
+                                <input type="text" id="ai-model" name="model" placeholder="例如：gpt-4o-mini">
+                            </div>
+                            <div class="field-group file-group">
+                                <label>角色图片</label>
+                                <div class="file-action">
+                                    <button type="button" class="ghost-button"
+                                        id="ai-character-image-upload">选择图片</button>
+                                    <span id="ai-character-image-label" class="file-label muted">未选择文件</span>
+                                </div>
+                                <input type="hidden" id="ai-character-image" name="character_image">
+                                <input type="file" id="ai-character-image-file" accept="image/*" hidden>
+                            </div>
+                            <button type="submit" class="primary-button">保存配置</button>
+                        </form>
+                        <div class="divider"></div>
+                        <section>
+                            <h3 class="section-title">聊天预设</h3>
+                            <ul class="preset-list" id="ai-preset-list"></ul>
+                            <form id="ai-preset-form" class="stack-form preset-form">
+                                <div class="field-group">
+                                    <label for="preset-name">预设名称</label>
+                                    <input type="text" id="preset-name" name="name" placeholder="如：调月莉音·日常" required>
+                                </div>
+                                <div class="field-group">
+                                    <label for="preset-description">预设简介</label>
+                                    <input type="text" id="preset-description" name="description" placeholder="一句话说明">
+                                </div>
+                                <div class="field-group">
+                                    <label for="preset-prompt">提示词 / 破甲</label>
+                                    <div class="file-action">
+                                        <button type="button" class="ghost-button"
+                                            id="preset-prompt-import">从文件导入</button>
+                                        <span id="preset-prompt-label" class="file-label muted">未选择文件</span>
+                                    </div>
+                                    <textarea id="preset-prompt" name="prompt" rows="4"
+                                        placeholder="粘贴详细的对话设定"></textarea>
+                                    <input type="file" id="preset-prompt-file" accept=".txt,.md,.json" hidden>
+                                </div>
+                                <div class="field-group file-group">
+                                    <label>角色卡 (.png)</label>
+                                    <div class="file-action">
+                                        <button type="button" class="ghost-button" id="preset-card-upload">选择文件</button>
+                                        <span id="preset-card-label" class="file-label muted">未选择文件</span>
+                                    </div>
+                                    <input type="hidden" id="preset-card" name="character_card">
+                                    <input type="file" id="preset-card-file" accept="image/png,image/jpeg,image/webp"
+                                        hidden>
+                                </div>
+                                <div class="field-group file-group">
+                                    <label>世界书 (.json)</label>
+                                    <div class="file-action">
+                                        <button type="button" class="ghost-button"
+                                            id="preset-world-upload">选择文件</button>
+                                        <span id="preset-world-label" class="file-label muted">未选择文件</span>
+                                    </div>
+                                    <input type="hidden" id="preset-world" name="world_book">
+                                    <input type="file" id="preset-world-file" accept=".json" hidden>
+                                </div>
+                                <button type="submit" class="primary-button">保存预设</button>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+                <div class="sidebar-section" data-section="history">
+                    <button type="button" class="sidebar-section-toggle" id="ai-history-section-toggle"
+                        aria-expanded="false" aria-controls="ai-history-section-body">
+                        <span>历史记录</span>
+                        <span class="toggle-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="sidebar-section-body collapsed" id="ai-history-section-body">
+                        <section class="history-section" aria-labelledby="ai-history-title">
+                            <div class="history-header">
+                                <h3 id="ai-history-title" class="section-title">历史记录</h3>
+                                <div class="history-actions">
+                                    <button type="button" class="ghost-button" id="ai-history-refresh">刷新</button>
+                                    <button type="button" class="ghost-button danger" id="ai-history-clear">清空</button>
+                                </div>
+                            </div>
+                            <ul class="history-list" id="ai-history-list">
+                                <li class="muted">暂无聊天记录。</li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="glass-panel ai-chat-panel" aria-labelledby="ai-chat-title">
+            <div class="panel-header chat-header">
+                <div class="chat-header-text">
+                    <h1 id="ai-chat-title">调月莉音</h1>
+                    <span class="muted">按 Enter 发送，Shift+Enter 换行</span>
+                </div>
+            </div>
+            <div class="panel-content chat-scroll" id="ai-conversation" aria-live="polite">
+                <p class="muted">开始新的对话，左侧选择预设或直接输入问题。</p>
+            </div>
+            <form id="ai-chat-form" class="chat-composer">
+                <textarea id="ai-chat-message" rows="2" placeholder="和调月莉音说点什么吧…" required></textarea>
+                <div class="composer-actions">
+                    <select id="ai-preset-select" aria-label="选择聊天预设">
+                        <option value="">无预设</option>
+                    </select>
+                    <button type="submit" class="primary-button">发送</button>
+                </div>
+            </form>
+        </section>
+        <section class="glass-panel ai-character-panel" aria-label="角色展示">
+            <div class="panel-header">
+                <h2>调月莉音</h2>
+            </div>
+            <div class="panel-content character-content" id="ai-character-visual">
+                <div class="fortune-image-placeholder">
+                    <span class="muted">可在设置中指定角色图片</span>
+                </div>
+            </div>
+            <div class="panel-footer character-meta" id="ai-character-meta">
+                <p class="muted">右侧展示最新的角色设定素材，方便对话时保持沉浸感。</p>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer">
+        <span>Rio Toolbox · 你的私人物品栏</span>
+    </footer>
+    <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/ai-chat.js"></script>
+</body>
+
+</html>

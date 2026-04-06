@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rio Toolbox</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body class="gradient gradient-aurora">
+    <div class="background-overlay"></div>
+    <header class="page-header">
+        <h1>Rio Toolbox</h1>
+        <div class="theme-controller">
+            <label for="gradient-select">主题背景</label>
+            <select id="gradient-select" aria-label="选择渐变主题">
+                <option value="gradient-aurora">Aurora</option>
+                <option value="gradient-dusk">Dusk</option>
+                <option value="gradient-ocean">Ocean</option>
+                <option value="gradient-mauve">Mauve</option>
+            </select>
+        </div>
+    </header>
+    <main class="main-container">
+        <section class="hero-copy">
+            <p>探索你的日常工具集。选择下面的功能开始体验。</p>
+        </section>
+        <section class="tool-grid" aria-label="工具列表">
+            <a class="tool-card" href="/random-number">
+                <div class="tool-title">随机数生成器</div>
+            </a>
+            <a class="tool-card" href="/food-picker">
+                <div class="tool-title">今天吃什么</div>
+            </a>
+            <a class="tool-card" href="/calendar">
+                <div class="tool-title">日程日历</div>
+            </a>
+            <a class="tool-card" href="/tasks">
+                <div class="tool-title">每日任务清单</div>
+            </a>
+            <a class="tool-card" href="/fortune">
+                <div class="tool-title">今日运势签</div>
+            </a>
+            <a class="tool-card" href="/ocr">
+                <div class="tool-title">OCR 翻译助手</div>
+            </a>
+            <a class="tool-card" href="/ai-chat">
+                <div class="tool-title">AI 对话工作台</div>
+            </a>
+        </section>
+    </main>
+    <footer class="page-footer">
+        <span>Rio Toolbox · 你的私人物品栏</span>
+    </footer>
+    <script src="/assets/js/base.js"></script>
+</body>
+
+</html>

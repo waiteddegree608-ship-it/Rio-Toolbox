@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日程日历 - Rio Toolbox</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body class="gradient gradient-aurora">
+    <div class="background-overlay"></div>
+    <header class="page-header">
+        <nav class="breadcrumb">
+            <a href="/" class="breadcrumb-link">工具箱首页</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>日程日历</span>
+        </nav>
+        <div class="theme-controller">
+            <label for="gradient-select">主题背景</label>
+            <select id="gradient-select" aria-label="选择渐变主题">
+                <option value="gradient-aurora">Aurora</option>
+                <option value="gradient-dusk">Dusk</option>
+                <option value="gradient-ocean">Ocean</option>
+                <option value="gradient-mauve">Mauve</option>
+            </select>
+        </div>
+    </header>
+    <main class="main-container calendar-grid">
+        <section class="glass-panel calendar-column" aria-labelledby="calendar-manage-title">
+            <div class="panel-header">
+                <h1 id="calendar-manage-title">添加日程</h1>
+            </div>
+            <div class="panel-content calendar-forms">
+                <section>
+                    <h2 class="section-title">单日事项</h2>
+                    <form id="calendar-single-form" class="stack-form">
+                        <div class="field-group">
+                            <label for="single-title">事项名称</label>
+                            <input type="text" id="single-title" name="title" placeholder="例如：提交周报" required>
+                        </div>
+                        <div class="field-group">
+                            <label for="single-date">发生日期</label>
+                            <input type="date" id="single-date" name="date" required>
+                        </div>
+                        <button type="submit" class="primary-button">添加事项</button>
+                    </form>
+                </section>
+                <section>
+                    <h2 class="section-title">周期事项</h2>
+                    <form id="calendar-recurring-form" class="stack-form">
+                        <div class="field-grid">
+                            <div class="field-group">
+                                <label for="recurring-title">事项名称</label>
+                                <input type="text" id="recurring-title" name="title" placeholder="例如：团队例会" required>
+                            </div>
+                            <div class="field-group">
+                                <label for="recurring-weekday">每周星期</label>
+                                <select id="recurring-weekday" name="weekday" required>
+                                    <option value="1">周一</option>
+                                    <option value="2">周二</option>
+                                    <option value="3">周三</option>
+                                    <option value="4">周四</option>
+                                    <option value="5">周五</option>
+                                    <option value="6">周六</option>
+                                    <option value="7">周日</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-grid">
+                            <div class="field-group">
+                                <label for="recurring-start">开始日期</label>
+                                <input type="date" id="recurring-start" name="start_date" required>
+                            </div>
+                            <div class="field-group">
+                                <label for="recurring-end">结束日期</label>
+                                <input type="date" id="recurring-end" name="end_date" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="primary-button">添加周期事项</button>
+                    </form>
+                </section>
+                <section>
+                    <h2 class="section-title">当前配置</h2>
+                    <div class="calendar-list" id="calendar-config"></div>
+                </section>
+            </div>
+        </section>
+        <section class="glass-panel calendar-column" aria-labelledby="calendar-timeline-title">
+            <div class="panel-header timeline-header">
+                <h2 id="calendar-timeline-title">未来 30 天日程</h2>
+                <div class="range-control">
+                    <label for="calendar-range">切换天数</label>
+                    <input type="number" id="calendar-range" min="7" max="120" value="30">
+                </div>
+            </div>
+            <div class="panel-content timeline-content" id="calendar-timeline">
+                <p class="muted">尚无日程数据。</p>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer">
+        <span>Rio Toolbox · 你的私人物品栏</span>
+    </footer>
+    <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/calendar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日任务清单 - Rio Toolbox</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+</head>
+
+<body class="gradient gradient-aurora">
+    <div class="background-overlay"></div>
+    <header class="page-header">
+        <nav class="breadcrumb">
+            <a href="/" class="breadcrumb-link">工具箱首页</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>每日任务清单</span>
+        </nav>
+        <div class="theme-controller">
+            <label for="gradient-select">主题背景</label>
+            <select id="gradient-select" aria-label="选择渐变主题">
+                <option value="gradient-aurora">Aurora</option>
+                <option value="gradient-dusk">Dusk</option>
+                <option value="gradient-ocean">Ocean</option>
+                <option value="gradient-mauve">Mauve</option>
+            </select>
+        </div>
+    </header>
+    <main class="main-container tasks-grid">
+        <section class="glass-panel task-column" aria-labelledby="task-form-title">
+            <div class="panel-header">
+                <h1 id="task-form-title">新建任务</h1>
+            </div>
+            <div class="panel-content task-form-wrap">
+                <form id="daily-task-form" class="stack-form">
+                    <h2 class="section-title">每日任务</h2>
+                    <div class="field-group">
+                        <label for="daily-task-title">任务名称</label>
+                        <input type="text" id="daily-task-title" name="title" placeholder="例如：晨间阅读 15 分钟" required>
+                    </div>
+                    <button type="submit" class="primary-button">添加每日任务</button>
+                </form>
+                <form id="temporary-task-form" class="stack-form">
+                    <h2 class="section-title">临时任务</h2>
+                    <div class="field-group">
+                        <label for="temporary-task-title">任务名称</label>
+                        <input type="text" id="temporary-task-title" name="title" placeholder="例如：预约牙科" required>
+                    </div>
+                    <button type="submit" class="primary-button">添加临时任务</button>
+                </form>
+                <div class="muted small-copy">
+                    <p>每日任务将在次日自动重置；临时任务需手动勾选完成或删除。</p>
+                </div>
+            </div>
+        </section>
+        <section class="glass-panel task-column" aria-labelledby="task-list-title">
+            <div class="panel-header">
+                <h2 id="task-list-title">任务看板</h2>
+            </div>
+            <div class="panel-content task-lists">
+                <section>
+                    <h3 class="section-title">每日任务</h3>
+                    <ul class="task-list" id="daily-task-list"></ul>
+                </section>
+                <section>
+                    <h3 class="section-title">临时任务</h3>
+                    <ul class="task-list" id="temporary-task-list"></ul>
+                </section>
+            </div>
+        </section>
+        <section class="glass-panel task-column task-assistant-panel" aria-labelledby="assistant-title">
+            <div class="panel-header">
+                <h2 id="assistant-title">AI 任务助手</h2>
+                <button type="button" class="ghost-button" id="assistant-refresh">重新分析</button>
+            </div>
+            <div class="panel-content chat-scroll" id="assistant-conversation" aria-live="polite">
+                <p class="muted">正在加载任务分析...</p>
+            </div>
+            <form id="assistant-chat-form" class="chat-composer">
+                <textarea id="assistant-message" rows="2" placeholder="向任务助手提问..." required></textarea>
+                <button type="submit" class="primary-button">发送</button>
+            </form>
+        </section>
+    </main>
+    <footer class="page-footer">
+        <span>Rio Toolbox · 你的私人物品栏</span>
+    </footer>
+    <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/tasks.js"></script>
+</body>
+
+</html>
